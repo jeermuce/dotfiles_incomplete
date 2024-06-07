@@ -1,3 +1,4 @@
+#!/bin/bash
 #    _               _              
 #   | |__   __ _ ___| |__  _ __ ___ 
 #   | '_ \ / _` / __| '_ \| '__/ __|
@@ -20,8 +21,7 @@ export EDITOR=neovide
 # ALIASES
 # -----------------------------------------------------
 alias sauce="source /home/osira/.bashrc"
-#!/bin/bash
-
+alias treeg="tree --gitignore"
 function rdisk() {
   local path=""
   local size=""
