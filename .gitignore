@@ -1,5 +1,6 @@
 # Ignore everything
 *
+.config
 
 # But not these files...
 !.gitconfig
