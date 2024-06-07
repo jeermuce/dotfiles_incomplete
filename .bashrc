@@ -1,1 +1,0 @@
-/home/osira/dotfiles/.bashrc
