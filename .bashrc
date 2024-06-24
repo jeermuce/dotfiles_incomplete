@@ -22,6 +22,11 @@ export EDITOR=neovide
 # -----------------------------------------------------
 alias sauce="source /home/osira/.bashrc"
 alias treeg="tree --gitignore"
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias yu='yay -Syu --noconfirm'
+alias pu='sudo pacman -Syu --noconfirm'
+alias yi='yay -S'
+alias pi='sudo pacman -S'
 function rdisk() {
   local path=""
   local size=""
