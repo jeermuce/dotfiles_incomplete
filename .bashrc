@@ -16,6 +16,10 @@ PS1='[\u@\h \W]\$ '
 
 # Define Editor
 export EDITOR=neovide
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
 
 
 
@@ -30,8 +34,8 @@ alias yu='yay -Syu --noconfirm'
 alias pu='sudo pacman -Syu --noconfirm'
 alias yi='yay -S'
 alias pi='sudo pacman -S'
-alias push="./push.sh"
-alias fix="./fix.sh"
+alias push="/home/osira/.scripts/push.sh"
+alias fix="/home/osira/.scripts/fix.sh"
 function rdisk() {
   local path=""
   local size=""
