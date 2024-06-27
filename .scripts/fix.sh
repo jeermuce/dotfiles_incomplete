@@ -2,30 +2,19 @@
 #check if oxlint and eslint are installed
 if ! command -v oxlint &> /dev/null; then
 #if currently at ~, install oxlint globally
-    if [ "$HOME" == "/home/osira" ] || [ "$HOME" == "/home/osira" ]; then
-        echo "{YELLOW}oxlint is not installed, and currently at home\nDo you want to install it globally?{NC}"
-        read -p "(y/n): " install_response
-        if [ "$install_response" == "y" ] || [ "$install_response" == "Y" ]; then
-            global_oxlint
-        else
-            echo "oxlint not installed"
-            exit 1
-        fi
-    else
-        echo "{YELLOW}oxlint is not installed, and currently not at home{NC}"
-        local_oxlint
-    fi
-
+    echo "{GREEN}INSTALLING OXLINT@LATEST LOCALLY AS DEV DEPENDENCY{NC}"
+    bun install oxlint@latest  -D
+    
+    
 fi
 
-function local_oxlint() {
-    echo "{GREEN}INSTALLING OXLINT@LATEST LOCALLY AS DEV DEPENDENCY{NC}"
-    bun install oxlint@latest -D
-}
-function global_oxlint() {
-    echo "{YELLLOW}INSTALLING OXLINT@LATEST GLOBALLY, this is not recommended{NC}"
-    bun install oxlint@latest --global
-}
+if ! command -v eslint &> /dev/null; then
+#if currently at ~, install eslint globally
+    echo "{GREEN}INSTALLING ESLINT@LATEST LOCALLY AS DEV DEPENDENCY{NC}"
+    bun install eslint@latest  -D
+    echo "{GREEN}INSTALLING ESLINT PLUGINS{NC}"
+    bun eslint --init
 
+fi
 
 bun oxlint . --fix && bun eslint . --fix
