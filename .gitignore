@@ -6,5 +6,6 @@
 !.gitconfig
 !.gitignore
 !.bashrc
+!*.sh
 !.wezterm.lua
 !.git/

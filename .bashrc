@@ -17,9 +17,12 @@ PS1='[\u@\h \W]\$ '
 # Define Editor
 export EDITOR=neovide
 
+
+
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
+alias bul="bun oxlint . --fix --jsdoc-plugin --react-perf-plugin --jest-plugin --jsx-a11y-plugin --nextjs-plugin --import-plugin --disable-react-plugin --disable-unicorn-plugin --disable-oxc-plugin --disable-typescript-plugin && bun eslint . --fix"
 alias sauce="source /home/osira/.bashrc"
 alias treeg="tree --gitignore"
 alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
@@ -27,6 +30,8 @@ alias yu='yay -Syu --noconfirm'
 alias pu='sudo pacman -Syu --noconfirm'
 alias yi='yay -S'
 alias pi='sudo pacman -S'
+alias push="./push.sh"
+alias fix="./fix.sh"
 function rdisk() {
   local path=""
   local size=""
