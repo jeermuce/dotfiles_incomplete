@@ -26,6 +26,8 @@ NC='\033[0m' # No Color
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
+alias dhr="sudo systemctl restart dhcpcd"
+alias cat="bat"
 alias bul="bun oxlint . --fix --jsdoc-plugin --react-perf-plugin --jest-plugin --jsx-a11y-plugin --nextjs-plugin --import-plugin --disable-react-plugin --disable-unicorn-plugin --disable-oxc-plugin --disable-typescript-plugin && bun eslint . --fix"
 alias sauce="source /home/osira/.bashrc"
 alias treeg="tree --gitignore"
