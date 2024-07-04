@@ -1,10 +1,10 @@
 #!/bin/bash
-#    _               _              
-#   | |__   __ _ ___| |__  _ __ ___ 
+#    _               _
+#   | |__   __ _ ___| |__  _ __ ___
 #   | '_ \ / _` / __| '_ \| '__/ __|
-#  _| |_) | (_| \__ \ | | | | | (__ 
+#  _| |_) | (_| \__ \ | | | | | (__
 # (_)_.__/ \__,_|___/_| |_|_|  \___|
-# 
+#
 # by Stephan Raabe (2023)
 # -----------------------------------------------------
 # ~/.bashrc
@@ -16,16 +16,117 @@ PS1='[\u@\h \W]\$ '
 
 # Define Editor
 export EDITOR=neovide
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export YELLOW='\033[1;33m'
+export NC='\033[0m' # No Color
 
 
 
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
+
+function packagejson() {
+    # Ensure the script runs in the directory where the package.json file is located
+    if [ ! -f package.json ]; then
+        echo "package.json not found in the current directory."
+        return 1
+    fi
+    # Ask the user if they want to replace the package.json file, default is yes
+    read -r -p "Do you want to replace package.json with the new configuration? [Y/n] " replace
+    if  [ "$replace" = "n" ] || [ "$replace" = "N" ] ; then
+        echo "Skipping package.json replacement."
+        biomejsonc
+        return 0
+    fi
+    
+    
+    # Use sed with a different delimiter to avoid conflicts with slashes in paths
+    sed -i 's| "scripts": {"lint": "bunx @biomejs/biome check --write ./src", "ulint": "bunx @biomejs/biome check --fix --unsafe ./src"|g' package.json
+    
+    # Check if the replacement was successful
+    if grep -q '@biomejs/biome check' package.json; then
+        echo "Replacement successful."
+        biomejsonc
+    else
+        echo "Replacement failed."
+        biomejsonc
+    fi
+
+}
+function biojsonc() {
+# Ensure the script runs in the directory where the biome.jsonc file is located
+if [ ! -f biome.jsonc ]; then
+    echo "biome.jsonc not found in the current directory."
+    return 1
+fi
+read -r -p "Do you want to replace biome.jsonc with the new configuration? [Y/n] " replace
+ if  [ "$replace" = "n" ] || [ "$replace" = "N" ] ; then
+    echo "Skipping biome.jsonc replacement."
+    return 0
+fi
+# Define the new content
+new_content='{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "useArrowFunction": "off",
+        "noStaticOnlyClass": "off"
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto"
+  },
+  "files": {
+    "ignoreUnknown": true
+  }
+}
+'
+
+    # Replace the contents of biome.jsonc with the new content
+    echo "$new_content" > biome.jsonc
+    cat biome.jsonc
+
+    # Check if the replacement was successful
+    if grep -q '"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json"' biome.jsonc; then
+      echo "biome.jsonc updated successfully."
+    else
+      echo "Failed to update biome.jsonc."
+
+    fi
+
+}
+
+  # Use sed with a different delimiter to avoid conflicts with slashes in paths
+
+
+function bioset() {
+  bun add --save-dev --save-exact @biomejs/biome && \
+  bunx @biomejs/biome init --jsonc && \
+  #ask if want to replace package.json
+    packagejson && biomejsonc
+
+}
+
 alias dhr="sudo systemctl restart dhcpcd"
 alias cat="bat"
 alias bul="bun oxlint . --fix --jsdoc-plugin --react-perf-plugin --jest-plugin --jsx-a11y-plugin --nextjs-plugin --import-plugin --disable-react-plugin --disable-unicorn-plugin --disable-oxc-plugin --disable-typescript-plugin && bun eslint . --fix"
@@ -72,15 +173,15 @@ function rdisk() {
 
   if [[ "$unmount" == "true" ]]; then
     echo "Unmounting $path"
-    sudo umount $path
-    sudo rmdir $path
+    sudo umount "$path"
+    sudo rmdir "$path"
   else
     if [[ -z "$size" ]]; then
       echo "Error: size is required for mounting"
       exit 1
     fi
     echo "Mounting tmpfs at $path with size $size"
-    sudo mount -m -t tmpfs -o size=$size tmpfs $path
+    sudo mount -m -t tmpfs -o size="$size" tmpfs $path
   fi
 }
 
