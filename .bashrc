@@ -82,8 +82,10 @@ new_content='{
     "rules": {
       "recommended": true,
       "complexity": {
-        "useArrowFunction": "off",
-        "noStaticOnlyClass": "off"
+        "useArrowFunction": "off"
+      },
+      "style": {
+        "useNodejsImportProtocol": "off"
       }
     }
   },
@@ -100,6 +102,7 @@ new_content='{
     "ignoreUnknown": true
   }
 }
+
 '
 
     # Replace the contents of biome.jsonc with the new content
@@ -139,36 +142,51 @@ alias yi='yay -S'
 alias pi='sudo pacman -S'
 alias push="/home/osira/.scripts/push.sh"
 alias fix="/home/osira/.scripts/fix.sh"
-function rdisk() {
+function ramdisk() {
   local path=""
   local size=""
   local unmount="false"
+
+  function show_help() {
+    echo "Usage: rdisk [OPTIONS]"
+    echo "Options:"
+    echo "  -p, --path PATH    Specify the mount path"
+    echo "  -s, --size SIZE    Specify the size for the tmpfs (required for mounting)"
+    echo "  -u, --unmount      Unmount the specified path"
+    echo "  -h, --help         Display this help message"
+  }
 
   # Parse command-line arguments
   while [[ "$#" -gt 0 ]]; do
     case $1 in
       -p|--path)
         path="$2"
-        shift
+        shift 2
         ;;
       -s|--size)
         size="$2"
-        shift
+        shift 2
         ;;
       -u|--unmount)
         unmount="true"
+        shift
+        ;;
+      -h|--help)
+        show_help
+        return 0
         ;;
       *)
         echo "Unknown parameter passed: $1"
-        exit 1
+        show_help
+        return 1
         ;;
     esac
-    shift
   done
 
   if [[ -z "$path" ]]; then
     echo "Error: path is required"
-    exit 1
+    show_help
+    return 1
   fi
 
   if [[ "$unmount" == "true" ]]; then
@@ -178,14 +196,17 @@ function rdisk() {
   else
     if [[ -z "$size" ]]; then
       echo "Error: size is required for mounting"
-      exit 1
+      show_help
+      return 1
     fi
     echo "Mounting tmpfs at $path with size $size"
-    sudo mount -m -t tmpfs -o size="$size" tmpfs $path
+    sudo mount -m -t tmpfs -o size="$size" tmpfs "$path"
   fi
 }
 
 
+
+alias rdisk="ramdisk"
 alias cbash="code ~/.bashrc"
 my_fc_list() {
   #if no arguments are passed, list all fonts
