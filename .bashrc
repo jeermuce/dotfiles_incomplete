@@ -27,34 +27,7 @@ export NC='\033[0m' # No Color
 # ALIASES
 # -----------------------------------------------------
 
-function packagejson() {
-    # Ensure the script runs in the directory where the package.json file is located
-    if [ ! -f package.json ]; then
-        echo "package.json not found in the current directory."
-        return 1
-    fi
-    # Ask the user if they want to replace the package.json file, default is yes
-    read -r -p "Do you want to replace package.json with the new configuration? [Y/n] " replace
-    if  [ "$replace" = "n" ] || [ "$replace" = "N" ] ; then
-        echo "Skipping package.json replacement."
-        biomejsonc
-        return 0
-    fi
-    
-    
-    # Use sed with a different delimiter to avoid conflicts with slashes in paths
-    sed -i 's| "scripts": {"lint": "bunx @biomejs/biome check --write ./src", "ulint": "bunx @biomejs/biome check --fix --unsafe ./src"|g' package.json
-    
-    # Check if the replacement was successful
-    if grep -q '@biomejs/biome check' package.json; then
-        echo "Replacement successful."
-        biomejsonc
-    else
-        echo "Replacement failed."
-        biomejsonc
-    fi
 
-}
 function biojsonc() {
 # Ensure the script runs in the directory where the biome.jsonc file is located
 if [ ! -f biome.jsonc ]; then
@@ -130,7 +103,9 @@ function bioset() {
 
 }
 
+alias dhnm="sudo systemctl restart dhcpcd && sudo systemctl restart NetworkManager.service"
 alias dhr="sudo systemctl restart dhcpcd"
+alias nms="sudo systemctl restart NetworkManager.service"
 alias cat="bat"
 alias bul="bun oxlint . --fix --jsdoc-plugin --react-perf-plugin --jest-plugin --jsx-a11y-plugin --nextjs-plugin --import-plugin --disable-react-plugin --disable-unicorn-plugin --disable-oxc-plugin --disable-typescript-plugin && bun eslint . --fix"
 alias sauce="source /home/osira/.bashrc"
@@ -142,6 +117,7 @@ alias yi='yay -S'
 alias pi='sudo pacman -S'
 alias push="/home/osira/.scripts/push.sh"
 alias fix="/home/osira/.scripts/fix.sh"
+alias grep="rg"
 function ramdisk() {
   local path=""
   local size=""
@@ -214,18 +190,17 @@ my_fc_list() {
     fc-list :family | sort | uniq
   else
     #if a font name is passed, list all fonts that contain that name
-    fc-list : family | sort | uniq | grep -i "$1"
+    fc-list : family | sort | uniq | rg -i "$1"
   fi
 
 }
-alias sfont="my_fc_list"
+alias sfont=my_fc_list
 alias c="code"
 alias cs='clear'
 alias nf='neofetch'
 alias pf='pfetch'
-alias ls='eza -a --icons'
-alias ll='eza -al --icons'
-alias lt='eza -a --tree --level=1 --icons'
+alias tree="eza --icons --git-ignore -a1TL"
+alias ls='eza -a1l --icons'
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
