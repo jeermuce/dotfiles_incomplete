@@ -99,7 +99,7 @@ function bioset() {
   bun add --save-dev --save-exact @biomejs/biome && \
   bunx @biomejs/biome init --jsonc && \
   #ask if want to replace package.json
-    packagejson && biomejsonc
+  biomejsonc
 
 }
 
