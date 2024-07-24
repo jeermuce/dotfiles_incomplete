@@ -11,3 +11,4 @@ _github
 !.scripts/
 !.wezterm.lua
 !.git/
+!.kanata.kbd

@@ -118,6 +118,7 @@ alias pi='sudo pacman -S'
 alias push="/home/osira/.scripts/push.sh"
 alias fix="/home/osira/.scripts/fix.sh"
 alias grep="rg"
+alias kanaka="kanata -c ~/.kanata.kbd"
 function ramdisk() {
   local path=""
   local size=""
