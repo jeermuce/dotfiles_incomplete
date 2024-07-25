@@ -11,7 +11,11 @@ _github
 !.scripts/
 !.wezterm.lua
 !.git/
-!.kanata.kbd
-!uetrldnasi.xkb # uetrldnasi.xkb is my personal keyboard layout
-!us # I replaced us intl. wit altgr dead keys with my own layout
-!us.bak # Backup without the replacement, path of origin is /usr/share/X11/xkb/symbols/us
+
+
+# uetrldnasi.xkb is my personal keyboard layout
+!uetrldnasi.xkb 
+# I replaced us intl. wit altgr dead keys with my own layout
+!us 
+# Backup without the replacement, path of origin is /usr/share/X11/xkb/symbols/us
+!us.bak 
