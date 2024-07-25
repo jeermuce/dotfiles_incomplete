@@ -118,7 +118,8 @@ alias pi='sudo pacman -S'
 alias push="/home/osira/.scripts/push.sh"
 alias fix="/home/osira/.scripts/fix.sh"
 alias grep="rg"
-alias kanaka="kanata -c ~/.kanata.kbd"
+
+alias kanaka="kanata -nc ~/.kanata.kbd"
 function ramdisk() {
   local path=""
   local size=""
@@ -197,11 +198,11 @@ my_fc_list() {
 }
 alias sfont=my_fc_list
 alias c="code"
-alias cs='clear'
+alias cs='clear' 
 alias nf='neofetch'
 alias pf='pfetch'
 alias tree="eza --icons --git-ignore -a1TL"
-alias ls='eza -a1l --icons'
+alias lz='eza -a1l --icons'
 alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
