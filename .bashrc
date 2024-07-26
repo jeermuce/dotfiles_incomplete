@@ -102,7 +102,8 @@ function bioset() {
   biomejsonc
 
 }
-
+alias setus="setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl"
+alias setcarp="setxkbmap -rules evdev -model evdev -layout us -variant carpalx-altgr-intl"
 alias dhnm="sudo systemctl restart dhcpcd && sudo systemctl restart NetworkManager.service"
 alias dhr="sudo systemctl restart dhcpcd"
 alias nms="sudo systemctl restart NetworkManager.service"
@@ -118,8 +119,8 @@ alias pi='sudo pacman -S'
 alias push="/home/osira/.scripts/push.sh"
 alias fix="/home/osira/.scripts/fix.sh"
 alias grep="rg"
+alias kanaka="kanata -nc ~/kanata.kbd"
 
-alias kanaka="kanata -nc ~/.kanata.kbd"
 function ramdisk() {
   local path=""
   local size=""

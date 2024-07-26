@@ -11,6 +11,8 @@ _github
 !.scripts/
 !.wezterm.lua
 !.git/
+# caps is now esc on tap, ctrl on hold
+!kanata.kbd
 
 
 # uetrldnasi.xkb is my personal keyboard layout

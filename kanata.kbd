@@ -1,0 +1,59 @@
+(defcfg)
+
+(defalias
+  slck ScrollLock
+  pscr PrintScreen
+  cxm ContextMenu
+  ps Pause
+  ex S-1 at S-2 hsh S-3 dll S-4 pnt S-5 cfl S-6 and S-7 str S-8 opn S-9 cpn S-0 ndr S-min pls S-eql 
+  Q S-q W S-w E S-e R S-r T S-t Y S-y U S-u I S-i O S-o P S-p obk BracketLeft cbk BracketRight bar S-\
+  A S-a S S-s D S-d F S-f G S-g H S-h J S-j K S-k L S-l cln S-scln dqt S-'
+  Z S-z X S-x C S-c V S-v B S-b N S-n M S-m lth S-comm gth S-. qsm S-/
+
+  obc {
+  cbc }
+)
+
+;;(defsrc
+;;     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+;; esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+;; grv 1     2     3     4     5     6     7     8     9     0     min   eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+;; tab  q     g     m     l     w     y     f     u     b     scln  [     ]    \      del         end         pgdn     kp7   kp8   kp9   kp+     
+;; caps  d     s     t     n     r     i     a     e     o     h     '         ret                                     kp4   kp5   kp6    
+;; lshift z     x     c     v     j     k     p     ,     .     /              rshift              up                  kp1   kp2   kp3   kprt   
+;; lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;;)
+ (defsrc
+      f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+  esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+  grv 1     2     3     4     5     6     7     8     9     0     min   eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+  tab  q     w     e     r     t     y     u     i     o     p     [     ]    \      del         end         pgdn     kp7   kp8   kp9   kp+     
+  caps  a     s     d     f     g     h     j     k     l     scln  '         ret                                     kp4   kp5   kp6    
+  lshift z     x     c     v     b     n     m     comm  .     /              rshift              up                  kp1   kp2   kp3   kprt   
+  lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+ )
+
+(deflayer base
+     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+ esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+ grv @ex   @at   @hsh  @dll  @pnt  @cfl  @and  @str  \     @bar  min   eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+ tab  /     y     f     m     scln  w     b      o    h     p     @opn  @obk @obc   del         end         pgdn     kp7   kp8   kp9   kp+     
+ caps  u     e     t     r     l     d     n      a    s     i     @dqt      ret                                     kp4   kp5   kp6    
+ lshift z     x     c     v     ,     .     g      k    j     q              rshift              up                  kp1   kp2   kp3   kprt   
+ lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+)
+(deflayer shift
+     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24          
+ esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+ grv 1     2     3     4     5     6     7     8     9     0     min   @pls  bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+ tab  /     @Y    @F    @M    @cln  @W    @B    @O    @H    @P    @cpn  @cbk @cbc   del         end         pgdn     kp7   kp8   kp9   kp+     
+ caps  @U    @E    @T    @R    @L    @D    @N    @A    @S    @I    '         ret                                     kp4   kp5   kp6    
+ lshift  @Z   @X    @C    @V    @lth   @gth @G    @K    @J    @Q             rshift              up                  kp1   kp2   kp3   kprt   
+ lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+)
+
+
+
+
+
+
