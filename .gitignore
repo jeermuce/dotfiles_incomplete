@@ -13,7 +13,7 @@ _github
 !.git/
 # caps is now esc on tap, ctrl on hold
 !kanata.kbd
-
+!.xprofile
 
 # uetrldnasi.xkb is my personal keyboard layout
 !uetrldnasi.xkb 
