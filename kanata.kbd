@@ -1,16 +1,84 @@
-(defcfg)
-
-(defalias
-  slck ScrollLock
-  pscr PrintScreen
-  cxm ContextMenu
-  ps Pause
-  ex S-1 at S-2 hsh S-3 dll S-4 pnt S-5 cfl S-6 and S-7 str S-8 opn S-9 cpn S-0 ndr S-min pls S-eql 
-  Q S-q W S-w E S-e R S-r T S-t Y S-y U S-u I S-i O S-o P S-p obk BracketLeft cbk BracketRight bar S-\
-  A S-a S S-s D S-d F S-f G S-g H S-h J S-j K S-k L S-l cln S-scln dqt S-'
-  Z S-z X S-x C S-c V S-v B S-b N S-n M S-m lth S-comm gth S-. qsm S-/
-  obc S-BracketLeft cbc S-BracketRight 
+(defcfg
+  process-unmapped-keys yes
 )
+
+(defalias esct (tap-hold 100 100 esc lctrl))
+(defalias lsht (layer-while-held shift) )
+(defalias rsht  (layer-while-held shift) )
+
+(defalias basel (layer-switch base))
+
+(defalias 
+bar S-\
+under S--
+ó (unicode ó)
+ö (unicode ö)
+ú (unicode ú)
+é (unicode é)
+á (unicode á)
+ä (unicode ä)
+í (unicode í)
+ï (unicode ï)
+ü (unicode ü)
+ë (unicode ë)
+opn S-9 cpn S-0
+obk [
+ umbk (unmod [)
+
+cbk ]
+cln S-scln
+
+)
+
+(defsrc
+     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+ esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+ grv 1     2     3     4     5     6     7     8     9     0     min   eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+ tab  q     w     e     r     t     y     u     i     o     p     BracketLeft     BracketRight    \      del         end         pgdn     kp7   kp8   kp9   kp+     
+ caps  a     s     d     f     g     h     j     k     l     scln  '         ret                                     kp4   kp5   kp6    
+ lshift z     x     c     v     b     n     m     comm  .     /              rshift              up                  kp1   kp2   kp3   kprt   
+ lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+)
+(def
+     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+ esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+ grv 1     2     3     4     5     6     7     8     9     0     min   eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+ tab  q     w     e     r     t     y     u     i     o     p     BracketLeft     BracketRight    \      del         end         pgdn     kp7   kp8   kp9   kp+     
+ caps  a     s     d     f     g     h     j     k     l     scln  '         ret                                     kp4   kp5   kp6    
+ lshift z     x     c     v     b     n     m     comm  .     /              rshift              up                  kp1   kp2   kp3   kprt   
+ lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+)
+;;(defsrc
+;;     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+;; esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+;; grv 1     2     3     4     5     6     7     8     9     0     min   eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+;; tab  q     g     m     l     w     y     f     u     b     scln  [     ]    \      del         end         pgdn     kp7   kp8   kp9   kp+     
+;; caps  d     s     t     n     r     i     a     e     o     h     '         ret                                     kp4   kp5   kp6    
+;; lshift z     x     c     v     j     k     p     ,     .     /              rshift              up                  kp1   kp2   kp3   kprt   
+;; lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;;)
+(deflayer base
+     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+ caps lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12         PrintScreen ScrollLock  Pause
+ grv S-1   S-2   S-3   S-4   S-5   S-6   S-7   S-8   \     S-\   S--   =     bspc   ins         home        pgup     nlck  kp/   kp*   kp-     
+ tab  /     y     f     m     scln  w     b     o     h     p     S-9   [    S-[    del         end         pgdn     kp7   kp8   kp9   kp+     
+ @esct u     e     t     r     l     d     n     a     s     i      '        ret                                     kp4   kp5   kp6    
+ @lsht   z     x     c     v     ,     .     g     k    j     q              @rsht              up                  kp1   kp2   kp3   kprt   
+ lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+)
+(deflayer shift
+     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+ caps lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12         PrintScreen ScrollLock  Pause
+ grv 1     2     3     4     5     6     7     8     9     0     -     +     bspc   ins         home        pgup     nlck  kp/   kp*   kp-   
+ tab  _     _     _     _     _     _     _      _    _     _     S-0   ]    S-]    del         end         pgdn     kp7   kp8   kp9   kp+     
+ @esct _     _     _     _     _     _     _      _    _     _     S-'       ret                                     kp4   kp5   kp6    
+ @lsht  _     _     _     _     _     _     _      _    _     _              @rsht              up                   kp1   kp2   kp3   kprt   
+ lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+)
+
+
+
+
 
 ;;(defsrc
 ;;     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
@@ -21,32 +89,98 @@
 ;; lshift z     x     c     v     j     k     p     ,     .     /              rshift              up                  kp1   kp2   kp3   kprt   
 ;; lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
 ;;)
-(defsrc
-     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
- esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
- grv 1     2     3     4     5     6     7     8     9     0     min   eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
- tab  q     w     e     r     t     y     u     i     o     p     [     ]    \      del         end         pgdn     kp7   kp8   kp9   kp+     
- caps  a     s     d     f     g     h     j     k     l     scln  '         ret                                     kp4   kp5   kp6    
- lshift z     x     c     v     b     n     m     comm  .     /              rshift              up                  kp1   kp2   kp3   kprt   
- lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
-)
+ 
 
-(deflayer base
-     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
- esc lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
- grv @ex   @at   @hsh  @dll  @pnt  @cfl  @and  @str  \     @bar  @ndr  eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
- tab  /     y     f     m     scln  w     b      o    h     p     @opn  @obk @obc   del         end         pgdn     kp7   kp8   kp9   kp+     
- caps  u     e     t     r     l     d     n      a    s     i     @dqt      ret                                     kp4   kp5   kp6    
- lshift z     x     c     v     ,     .     g      k    j     q              rshift              up                  kp1   kp2   kp3   kprt   
- lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
-)
-(deflayer shift
-     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24          
- esc lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
- grv 1     2     3     4     5     6     7     8     9     0     min   @pls  bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
- tab  /     @Y    @F    @M    @cln  @W    @B    @O    @H    @P    @cpn  @cbk @cbc   del         end         pgdn     kp7   kp8   kp9   kp+     
- caps  @U    @E    @T    @R    @L    @D    @N    @A    @S    @I    '         ret                                     kp4   kp5   kp6    
- lshift  @Z   @X    @C    @V    @lth   @gth @G    @K    @J    @Q             rshift              up                  kp1   kp2   kp3   kprt   
- lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
-)
 
+
+
+
+;;might do this later, need to figure out some things 
+
+
+;; (defsrc
+;;      f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+;;  esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+;;  grv 1     2     3     4     5     6     7     8     9     0     min   eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+;;  tab  q     w     e     r     t     y     u     i     o     p     [     ]    \      del         end         pgdn     kp7   kp8   kp9   kp+     
+;;  caps  a     s     d     f     g     h     j     k     l     scln  '         ret                                     kp4   kp5   kp6    
+;;  lshift z     x     c     v     b     n     m     comm  .     /              rshift              up                  kp1   kp2   kp3   kprt   
+;;  lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;; )
+
+
+;; (deflayer base
+;;      f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+;;  @capsl lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+;;  grv @!    @@    @#    @$    @%    @^    @&    @*    \     @|    @_    eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp-   
+;;  tab  /     y     f     m     scln  w     b      o    h     p     @opn  @obk @obc   del         end         pgdn     kp7   kp8   kp9   kp+     
+;;  @esct u     e     t     r     l     d     n      a    s     i     @dqt      ret                                     kp4   kp5   kp6    
+;;  @sht   z     x     c     v     ,     .     g      k    j     q              @sht              up                  kp1   kp2   kp3   kprt   
+;;  lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;; )
+
+;; (deflayer shift
+;;      f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24          
+;;  @capsl lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause 
+;;  @~  1     2     3     4     5     6     7     8     9     0     -     +     bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+;;  tab  @/    @Y    @F    @M    @:    @W    @B    @O    @H    @P    @cpn  @cbk @cbc   del         end         pgdn     kp7   kp8   kp9   kp+     
+;;  @esct  @U    @E    @T    @R    @L    @D    @N    @A    @S    @I    '         ret                                     kp4   kp5   kp6    
+;;  lshift  @Z   @X    @C    @V    @<   @> @G    @K    @J    @Q                 rshift              up                  kp1   kp2   kp3   kprt    
+;;  lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;; )
+
+;; (deflayer caps
+;;      f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24          
+;;  @basel lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+;;  grv @!    @@    @#    @$    @%    @^    @&    @*    \     @|    @_    eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+;;  tab  /     @Y    @F    @M    scln  @W    @B    @O    @H    @P    @opn  @obk @obc   del         end         pgdn     kp7   kp8   kp9   kp+     
+;;  @esct  @U    @E    @T    @R    @L    @D    @N    @A    @S    @I    @dqt      ret                                     kp4   kp5   kp6    
+;;  lshift  @Z   @X    @C    @V    ,     .     @G    @K    @J    @Q             rshift              up                  kp1   kp2   kp3   kprt    
+;;  lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;; )
+
+
+
+
+;; (deflayer altgr
+;;      f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24          
+;;  caps lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+;;  @`  @¡    @d˝   @d¯   @€    @¶    @§    @d̛    @d˛   @¬    @¦    @¥    @×    bspc   ins         home        pgup     nlck  kp/   kp*   kp-
+;;  tab  @¿    @ï    @ä    @µ    @ø    w     @ö    @ó    @ü    @å    @‘    @’   @«     del         end         pgdn     kp7   kp8   kp9   kp+     
+;;  @esct  @ú    @é    @þ    @®    @©    @ð    @ñ    @á    @ß    @í    @´        ret                                     kp4   kp5   kp6    
+;;  lshift @·    @ş    @ç    @æ    @ë    @ḋ    @ğ    @ı    @œ    @°             rshift              up                  kp1   kp2   kp3   kprt
+;;  lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;; )
+
+;; (deflayer shagr
+;;      f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24
+;;  caps lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+;;  @d~ @¹    @²    @³   @£    @ḑ    @¼    @½    @¾    @d˘   @d˚   @dudt @÷    bspc   ins         home        pgup     nlck  kp/   kp*   kp-
+;;  tab  @dˀ   @Ï    @Ä    @±    @Ø    @W    @Ö    @Ó    @Ü    @Å    @“    @”   @»     del         end         pgdn     kp7   kp8   kp9   kp+     
+;;  @esct  @Ú    @É    @Þ    @™    @¢    @Ð    @Ñ    @Á    @§    @Í    @d¨       ret                                     kp4   kp5   kp6    
+;;  lshift @đ    @Ş    @Ç    @Æ    @Ë    @dˇ   @Ğ    @İ    @Æ    @¶             rshift              up                  kp1   kp2   kp3   kprt
+;;  lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;; )
+
+
+;; (deflayer cagr
+;;      f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24
+;;  caps lrld  f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+;;  @d~ @¹    @²    @³   @£    @ḑ    @¼    @½    @¾    @d˘   @d˚   @dudt @÷    bspc   ins         home        pgup     nlck  kp/   kp*   kp-
+;;  tab  @¿    @Ï    @Ä    @±    @Ø    @W    @Ö    @Ó    @Ü    @Å    @“    @”   @»     del         end         pgdn     kp7   kp8   kp9   kp+     
+;;  @esct  @Ú    @É    @Þ    @™    @¢    @Ð    @Ñ    @Á    @§    @Í    @d¨       ret                                     kp4   kp5   kp6    
+;;  lshift @đ    @Ş    @Ç    @Æ    @Ë    @dˇ   @Ğ    @İ    @Æ    @¶             rshift              up                  kp1   kp2   kp3   kprt
+;;  lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;; )
+
+;;(defsrc
+;;     f13   f14   f15   f16   f17   f18   f19   f20   f21   f22   f23   f24 
+;; esc f1    f2    f3    f4    f5    f6    f7    f8    f9    f10   f11   f12          PrintScreen ScrollLock  Pause
+;; grv 1     2     3     4     5     6     7     8     9     0     min   eql   bspc   ins         home        pgup     nlck  kp/   kp*   kp- 
+;; tab  q     g     m     l     w     y     f     u     b     scln  [     ]    \      del         end         pgdn     kp7   kp8   kp9   kp+     
+;; caps  d     s     t     n     r     i     a     e     o     h     '         ret                                     kp4   kp5   kp6    
+;; lshift z     x     c     v     j     k     p     ,     .     /              rshift              up                  kp1   kp2   kp3   kprt   
+;; lctrl lmeta lalt                  spc                  ralt ContextMenu     rctrl         lft  down   rght          kp0   kp.     
+;;)
+
+ 

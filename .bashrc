@@ -102,8 +102,10 @@ function bioset() {
   biomejsonc
 
 }
-alias setus="setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl"
-alias setcarp="setxkbmap -rules evdev -model evdev -layout us -variant carpalx-altgr-intl"
+alias us="setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl"
+alias is="setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl"
+alias carp="setxkbmap -rules evdev -model evdev -layout us -variant carpalx-altgr-intl"
+alias cjgm="setxkbmap -rules evdev -model evdev -layout us -variant carpalx-altgr-intl"
 alias dhnm="sudo systemctl restart dhcpcd && sudo systemctl restart NetworkManager.service"
 alias dhr="sudo systemctl restart dhcpcd"
 alias nms="sudo systemctl restart NetworkManager.service"
