@@ -1,1 +1,0 @@
-setxkbmap -rules evdev -model evdev -layout us -variant carpalx-altgr-intl
