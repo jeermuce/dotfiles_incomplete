@@ -97,13 +97,16 @@ function git(){
     
     for arg in "$@"; do
         if [[ "$arg" == "pull" ]]; then
-            command git pull --rebase --autostash
-            
-            echo -e "${CYAN}--rebase --autostash used${NOCOLOR}"
-            echo -e "if there are conflicts:"
-            echo -e "${BLUE}    1. fix conflicts ${NOCOLOR}"
-            echo -e "${YELLOW}    2. git add <file> ${NOCOLOR}"
-            echo -e "${GREEN}    3. git rebase --continue ${NOCOLOR}"
+        # save output to variable named "output"
+            output="$(command git pull --rebase --autostash )"
+            echo "$output"
+            if [[ $output == *"CONFLICT"* ]]; then
+                echo -e "${CYAN}--rebase --autostash used${NOCOLOR}"
+                echo -e "if there are conflicts:"
+                echo -e "${BLUE}    1. fix conflicts ${NOCOLOR}"
+                echo -e "${YELLOW}    2. git add <file> ${NOCOLOR}"
+                echo -e "${GREEN}    3. git rebase --continue ${NOCOLOR}"
+            fi
             return 0
         fi
     done
@@ -114,7 +117,8 @@ function git(){
 }
 
 function push(){
-    git pull --rebase --autostash
+    git pull
+    
     read -r -p "What will be added?" files
     while IFS= read -r file; do
         git add "$file"
