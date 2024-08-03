@@ -19,7 +19,6 @@ GREEN="\e[32m"
 CYAN="\e[36m"
 NOCOLOR="\e[37m"
 # Define Editor
-echo "{NOCOLOR}"
 export EDITOR=neovide
 function yy() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -34,7 +33,12 @@ function yy() {
 # -----------------------------------------------------
 alias sauce="source /home/osira/.bashrc"
 #!/bin/bash
-
+function yu(){
+    yay -Syu "$@" --noconfirm --needed
+}
+function pu(){
+    sudo pacman -Syu "$@" --noconfirm --needed
+}
 function rdisk() {
     local path=""
     local size=""
