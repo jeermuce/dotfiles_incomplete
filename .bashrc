@@ -1,3 +1,4 @@
+#!/bin/bash
 #    _               _
 #   | |__   __ _ ___| |__  _ __ ___
 #   | '_ \ / _` / __| '_ \| '__/ __|
@@ -34,8 +35,9 @@ function yy() {
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
-alias sauce="source /home/osira/.bashrc"
-#!/bin/bash
+function sos(){
+    source /home/osira/.bashrc
+}
 function dhr(){
     sudo systemctl restart dhcpcd
 }
