@@ -18,6 +18,9 @@ BLUE="\e[34m"
 GREEN="\e[32m"
 CYAN="\e[36m"
 NOCOLOR="\e[37m"
+function zed() {
+    ~/.local/bin/zed "$@"
+} 
 # Define Editor
 export EDITOR=neovide
 function yy() {
