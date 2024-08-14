@@ -36,6 +36,10 @@ function yy() {
 # -----------------------------------------------------
 alias sauce="source /home/osira/.bashrc"
 #!/bin/bash
+function dhr(){
+    sudo systemctl restart dhcpcd
+}
+
 function yu(){
     yay -Syu "$@" --noconfirm --needed
 }
