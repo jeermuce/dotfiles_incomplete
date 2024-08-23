@@ -149,7 +149,8 @@ function push() {
     git commit -m "$commit"
     
     while true; do
-        read -rp "Push? (y/n): " push
+        read -rp "Push? (Y/n): " push
+        push=${push:-y}
         case "$push" in
             [yY]) git push; break ;;
             [nN]) echo "Push aborted"; break ;;
