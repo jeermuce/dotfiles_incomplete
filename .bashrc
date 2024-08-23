@@ -41,6 +41,12 @@ function sos(){
 function dhr(){
     sudo systemctl restart dhcpcd
 }
+function nmr(){
+    sudo systemctl restart NetworkManager
+}
+function nwr(){
+    dhr && nmr
+}
 
 function yu(){
     yay -Syu "$@" --noconfirm --needed
