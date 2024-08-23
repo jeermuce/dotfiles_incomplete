@@ -21,7 +21,7 @@ CYAN="\e[36m"
 NOCOLOR="\e[37m"
 function zed() {
     ~/.local/bin/zed "$@"
-} 
+}
 # Define Editor
 export EDITOR=neovide
 function yy() {
@@ -116,7 +116,7 @@ function git(){
     
     for arg in "$@"; do
         if [[ "$arg" == "pull" ]]; then
-        # save output to variable named "output"
+            # save output to variable named "output"
             output="$(command git pull --rebase --autostash )"
             echo "$output"
             if [[ $output == *"CONFLICT"* ]]; then
@@ -128,6 +128,7 @@ function git(){
             fi
             return 0
         fi
+        
     done
     
     command git "$@"
@@ -135,17 +136,61 @@ function git(){
     
 }
 
-function push(){
-    git pull
+
+
+function push() {
+    git add -p
+    if [ $? -ne 0 ]; then
+        echo -e "${RED}No changes.${NOCOLOR}"
+        return
+    fi
     
-    read -r -p "What will be added?" files
-    while IFS= read -r file; do
-        git add "$file"
-    done <<< "$files"
-    echo "Added files: $files"
-    read -r -p "Commit message: " message
-    git commit -m "$message"
-    git push
+    read -rp "Commit message: " commit
+    git commit -m "$commit"
+    
+    while true; do
+        read -rp "Push? (y/n): " push
+        case "$push" in
+            [yY]) git push; break ;;
+            [nN]) echo "Push aborted"; break ;;
+            *) echo "Please enter y or n." ;;
+        esac
+    done
+}
+
+
+
+function addignore(){
+    
+    if [ ! -f ".gitignore" ]; then
+        echo "File .gitignore not found in current directory"
+        return 1
+    fi
+    
+    if [ -z "$1" ]; then
+        echo "Usage: addgitignore <flag> <file>"
+        return 1
+    fi
+    
+    files=()
+    while true; do
+        read -pr "File: " file
+        if [ -z "$file" ]; then
+            echo "Empty file"
+            continue
+            elif [ "$file" = "." ]; then
+            echo "File is ."
+            break
+        else
+            files+=("$file")
+        fi
+    done
+    
+    for file in "${files[@]}"; do
+        echo "$file" >> .gitignore
+    done
+    
+    
 }
 
 
