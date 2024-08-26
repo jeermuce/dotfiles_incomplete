@@ -16,7 +16,8 @@ end)
 config.window_background_opacity = 0.9
 config.enable_tab_bar = false
 config.window_decorations = "NONE"
-config.font = wezterm.font('Hasklug Nerd Font Mono')
+
+config.font = wezterm.font('Iosevka term light extended ')
 config.font_size = 14
 config.color_scheme = 'Dark Pastel (Gogh)'
 config.keys = {

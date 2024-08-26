@@ -102,15 +102,19 @@ function rdisk() {
 
 
 alias cbash="code ~/.bashrc"
-my_fc_list() {
+function fc_list() {
     #if no arguments are passed, list all fonts
     if [ -z "$1" ]; then
         fc-list :family | sort | uniq
     else
         #if a font name is passed, list all fonts that contain that name
-        fc-list : family | sort | uniq | grep -i "$1"
+        fc-list : family | sort | uniq | rg -i "$1"
     fi
     
+}
+
+function refresh_font_cache() {
+    sudo fc-cache -fv
 }
 function git(){
     
@@ -196,7 +200,8 @@ function addignore(){
 
 
 
-alias sfont="my_fc_list"
+alias lsfonts=fc_list
+alias rfonts="refresh_font_cache"
 alias c="code"
 alias cs='clear'
 alias nf='fastfetch'
