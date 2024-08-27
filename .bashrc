@@ -23,7 +23,7 @@ function zed() {
     ~/.local/bin/zed "$@"
 }
 # Define Editor
-export EDITOR=neovide
+export EDITOR=nvim
 function yy() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
     yazi "$@" --cwd-file="$tmp"

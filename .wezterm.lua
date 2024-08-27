@@ -21,6 +21,7 @@ config.font = wezterm.font('Iosevka term light extended ')
 config.font_size = 14
 config.color_scheme = 'Dark Pastel (Gogh)'
 config.keys = {
+
   {
     key = 'q',
     mods = 'CTRL',
@@ -38,17 +39,17 @@ config.keys = {
   },
   {
     key = 'a',
-    mods = 'ALT',
+    mods = 'ALT|CTRL',
     action = act.SplitVertical { domain = 'CurrentPaneDomain' },
   },
   {
     key = 'e',
-    mods = 'ALT',
+    mods = 'ALT|CTRL',
     action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
   },
   {
     key = 'o',
-    mods = 'ALT',
+    mods = 'ALT|CTRL|WIN',
     action = act.CloseCurrentPane { confirm = false },
   },
   {
