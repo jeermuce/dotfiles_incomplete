@@ -49,7 +49,7 @@ function nwr(){
 }
 
 function yu(){
-    yay -Syu "$@" --noconfirm --needed
+    paru -Syu "$@" --noconfirm --needed
 }
 function pu(){
     sudo pacman -Syu "$@" --noconfirm --needed
