@@ -116,28 +116,9 @@ function fc_list() {
 function refresh_font_cache() {
     sudo fc-cache -fv
 }
-function git(){
-    
-    for arg in "$@"; do
-        if [[ "$arg" == "pull" ]]; then
-            # save output to variable named "output"
-            output="$(command git pull --rebase --autostash )"
-            echo "$output"
-            if [[ $output == *"CONFLICT"* ]]; then
-                echo -e "${CYAN}--rebase --autostash used${NOCOLOR}"
-                echo -e "if there are conflicts:"
-                echo -e "${BLUE}    1. fix conflicts ${NOCOLOR}"
-                echo -e "${YELLOW}    2. git add <file> ${NOCOLOR}"
-                echo -e "${GREEN}    3. git rebase --continue ${NOCOLOR}"
-            fi
-            return 0
-        fi
-        
-    done
-    
-    command git "$@"
-    
-    
+
+function hysl(){
+    sudo systemctl hybrid-sleep
 }
 
 
