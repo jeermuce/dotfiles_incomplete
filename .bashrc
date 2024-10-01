@@ -35,6 +35,9 @@ function yy() {
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
+function z(){
+    zellij -c /home/osira/.config/zellij/config.kdl
+}
 function sos(){
     source /home/osira/.bashrc
 }

@@ -13,7 +13,7 @@ wezterm.on('gui-startup', function(window)
   local gui_window = window:gui_window();
   gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
 end)
-config.window_background_opacity = 0.9
+config.window_background_opacity = 1
 config.enable_tab_bar = false
 config.window_decorations = "NONE"
 
