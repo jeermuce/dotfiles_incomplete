@@ -9,16 +9,6 @@ _github
 !.bashrc
 !*.sh
 !.scripts/
+!.scripts/*
 !.wezterm.lua
 !.git/
-# caps is now esc on tap, ctrl on hold
-!kanata.kbd
-!.xprofile
-!.xinitrc
-
-# uetrldnasi.xkb is my personal keyboard layout
-!uetrldnasi.xkb 
-# I replaced us intl. wit altgr dead keys with my own layout
-!us 
-# Backup without the replacement, path of origin is /usr/share/X11/xkb/symbols/us
-!us.bak 
