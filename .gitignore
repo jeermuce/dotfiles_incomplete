@@ -1,14 +1,12 @@
 # Ignore everything
 *
-.config
-_github
 
-# But not these files...
+# Except these files...
 !.gitconfig
 !.gitignore
 !.bashrc
 !*.sh
 !.scripts/
-!.scripts/*
+!.scripts/**
 !.wezterm.lua
 !.git/
