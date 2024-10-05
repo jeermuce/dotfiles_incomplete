@@ -35,6 +35,8 @@ function yy() {
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
+npm='bun'
+npx='bunx'
 function z(){
     zellij -c /home/osira/.config/zellij/config.kdl
 }

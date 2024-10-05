@@ -3,16 +3,32 @@ local act = wezterm.action
 local config = {}
 local mux = wezterm.mux
 local session_manager = require("wezterm-session-manager/session-manager")
+
 wezterm.on("save_session", function(window) session_manager.save_state(window) end)
 wezterm.on("load_session", function(window) session_manager.load_state(window) end)
 wezterm.on("restore_session", function(window) session_manager.restore_state(window) end)
-
 
 wezterm.on('gui-startup', function(window)
   local tab, pane, window = mux.spawn_window(cmd or {})
   local gui_window = window:gui_window();
   gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
 end)
+
+
+local active_toast = nil
+
+wezterm.on("update-right-status", function(window, pane)
+  local lines = pane:get_lines_as_text()
+  if lines:find("%[sudo%] password for") then
+    if active_toast then
+      window:dismiss_notification(active_toast)
+    end
+    active_toast = window:toast_notification("Password Prompt", "sudo password prompt detected", nil, 40000)
+  end
+end)
+
+
+
 config.window_background_opacity = 1
 config.enable_tab_bar = false
 config.window_decorations = "NONE"
@@ -21,7 +37,6 @@ config.font = wezterm.font('Iosevka term light extended ')
 config.font_size = 14
 config.color_scheme = 'Dark Pastel (Gogh)'
 config.keys = {
-
   {
     key = 'q',
     mods = 'CTRL',
@@ -103,9 +118,7 @@ config.keys = {
     mods = "CTRL|SHIFT",
     action = wezterm.action { EmitEvent = "restore_session" }
   }
-
 }
-
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
