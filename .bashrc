@@ -151,39 +151,6 @@ function push() {
 
 
 
-function addignore(){
-    
-    if [ ! -f ".gitignore" ]; then
-        echo "File .gitignore not found in current directory"
-        return 1
-    fi
-    
-    if [ -z "$1" ]; then
-        echo "Usage: addgitignore <flag> <file>"
-        return 1
-    fi
-    
-    files=()
-    while true; do
-        read -pr "File: " file
-        if [ -z "$file" ]; then
-            echo "Empty file"
-            continue
-            elif [ "$file" = "." ]; then
-            echo "File is ."
-            break
-        else
-            files+=("$file")
-        fi
-    done
-    
-    for file in "${files[@]}"; do
-        echo "$file" >> .gitignore
-    done
-    
-    
-}
-
 
 
 alias lsfonts=fc_list
@@ -331,3 +298,6 @@ esac
 # pnpm end
 # Turso
 export PATH="$PATH:/home/osira/.turso"
+
+# Created by `pipx` on 2024-10-11 05:15:43
+export PATH="$PATH:/home/osira/.local/bin"
