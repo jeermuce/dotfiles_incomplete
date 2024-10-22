@@ -15,38 +15,6 @@ wezterm.on('gui-startup', function(window)
 end)
 
 
-local active_toast = nil
-local last_toast_time = 0
-local toast_interval = 5000 -- 5 seconds
-local toast_duration = 400  -- duration of the toast in milliseconds
-
-wezterm.on("update-right-status", function(window, pane)
-  local lines = pane:get_lines_as_text()
-  local current_time = os.time() * 1000 -- convert to milliseconds
-
-  if lines:find("%[sudo%] password for") then
-    if not active_toast and (current_time - last_toast_time > toast_interval) then
-      active_toast = window:toast_notification("Password Prompt", "sudo password prompt detected", nil, toast_duration)
-      last_toast_time = current_time
-
-      -- Set a timer to dismiss the notification after the toast duration
-      wezterm.run_after_ms(toast_duration, function()
-        if active_toast then
-          window:dismiss_notification(active_toast)
-          active_toast = nil
-        end
-      end)
-    end
-  else
-    if active_toast then
-      window:dismiss_notification(active_toast)
-      active_toast = nil
-    end
-  end
-end)
-
-
-
 
 config.window_background_opacity = 1
 config.enable_tab_bar = false

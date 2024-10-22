@@ -35,10 +35,18 @@ function yy() {
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
-npm='bun'
-npx='bunx'
+function npm() {
+    command bun "$@"
+}
+
+function npx() {
+    bunx "$@"
+}
 function z(){
     zellij -c /home/osira/.config/zellij/config.kdl
+}
+function wbash(){
+    code ~/.wezterm.lua
 }
 function sos(){
     source /home/osira/.bashrc
