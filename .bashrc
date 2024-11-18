@@ -9,7 +9,11 @@
 # -----------------------------------------------------
 # ~/.bashrc
 # -----------------------------------------------------
-
+eval "$(fnm env --use-on-cd --shell bash)"
+export ANDROID_HOME="/opt/android-sdk"
+export NDK_HOME="/opt/android-ndk"
+export FLYCTL_INSTALL="/home/osira/.fly"
+  export PATH="$FLYCTL_INSTALL/bin:$PATH"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 PS1='[\u@\h \W]\$ '
@@ -23,6 +27,7 @@ function zed() {
     ~/.local/bin/zed "$@"
 }
 # Define Editor
+export JAVA_HOME=/opt/android-studio/jbr
 export EDITOR=nvim
 function yy() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -35,13 +40,6 @@ function yy() {
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
-function npm() {
-    command bun "$@"
-}
-
-function npx() {
-    bunx "$@"
-}
 function z(){
     zellij -c /home/osira/.config/zellij/config.kdl
 }
