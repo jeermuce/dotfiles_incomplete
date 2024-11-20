@@ -10,10 +10,10 @@
 # ~/.bashrc
 # -----------------------------------------------------
 eval "$(fnm env --use-on-cd --shell bash)"
-export ANDROID_HOME="/opt/android-sdk"
-export NDK_HOME="/opt/android-ndk"
+# export ANDROID_HOME="/opt/android-sdk"
+# export oNDK_HOME="/opt/android-ndk"
 export FLYCTL_INSTALL="/home/osira/.fly"
-  export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 PS1='[\u@\h \W]\$ '
@@ -29,7 +29,7 @@ function zed() {
 # Define Editor
 export JAVA_HOME=/opt/android-studio/jbr
 export EDITOR=nvim
-function yy() {
+function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
     yazi "$@" --cwd-file="$tmp"
     if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -37,6 +37,8 @@ function yy() {
     fi
     rm -f -- "$tmp"
 }
+
+
 # -----------------------------------------------------
 # ALIASES
 # -----------------------------------------------------
@@ -110,9 +112,36 @@ function rdisk() {
         sudo mount -m -t tmpfs -o size=$size tmpfs $path
     fi
 }
+function cwez(){
+    code ~/.wezterm.lua
+}
+function czed(){
+    code ~/.config/zellij/config.kdl
+}
+function nwez(){
+    nvim ~/.wezterm.lua
+}
 
+function nzed(){
+    nvim ~/.config/zellij/config.kdl
+}
 
-alias cbash="code ~/.bashrc"
+function catwez(){
+    cat ~/.wezterm.lua
+}
+function catzed(){
+    cat ~/.config/zellij/config.kdl
+}
+function catbash(){
+    cat ~/.bashrc
+}
+function nbash(){
+    nvim ~/.bashrc
+}
+
+function cbash(){
+    code ~/.bashrc
+}
 function fc_list() {
     #if no arguments are passed, list all fonts
     if [ -z "$1" ]; then
