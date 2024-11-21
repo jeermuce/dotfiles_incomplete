@@ -35,7 +35,7 @@ export EDITOR=nvim
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
     yazi "$@" --cwd-file="$tmp"
-    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    if cwd="$(bat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
         builtin cd -- "$cwd"
     fi
     rm -f -- "$tmp"
@@ -127,15 +127,17 @@ function nwez(){
 function nzed(){
     nvim ~/.config/zellij/config.kdl
 }
-
-function catwez(){
-    cat ~/.wezterm.lua
+function cat(){
+    bat "$@"
 }
-function catzed(){
-    cat ~/.config/zellij/config.kdl
+function batwez(){
+    bat ~/.wezterm.lua
 }
-function catbash(){
-    cat ~/.bashrc
+function batzed(){
+    bat ~/.config/zellij/config.kdl
+}
+function batbash(){
+    bat ~/.bashrc
 }
 function nbash(){
     nvim ~/.bashrc
