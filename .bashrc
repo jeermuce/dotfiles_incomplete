@@ -14,6 +14,9 @@ eval "$(fnm env --use-on-cd --shell bash)"
 # export oNDK_HOME="/opt/android-ndk"
 export FLYCTL_INSTALL="/home/osira/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+source "/home/osira/.scripts/clear.sh"
+source "/home/osira/.scripts/ns.sh"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 PS1='[\u@\h \W]\$ '
@@ -45,9 +48,7 @@ function y() {
 function z(){
     zellij -c /home/osira/.config/zellij/config.kdl
 }
-function wbash(){
-    code ~/.wezterm.lua
-}
+
 function sos(){
     source /home/osira/.bashrc
 }
@@ -60,18 +61,21 @@ function nmr(){
 function nwr(){
     dhr && nmr
 }
-
-function yu(){
-    paru -Syu "$@" --noconfirm --needed
+function clean_trash(){
+    sudo rm -rf ~/.local/share/Trash/files/*
+    sudo rm -rf ~/.local/share/Trash/info/*
+}
+export STARSHIP_CONFIG=~/starship.toml
+function pc(){
+    paru -Sccd
 }
 function pu(){
-    sudo pacman -Syu "$@" --noconfirm --needed
+    sudo paru -Syu "$@" --noconfirm --needed  --batchinstall
 }
 function rdisk() {
     local path=""
     local size=""
     local unmount="false"
-    
     # Parse command-line arguments
     while [[ "$#" -gt 0 ]]; do
         case $1 in
@@ -93,12 +97,10 @@ function rdisk() {
         esac
         shift
     done
-    
     if [[ -z "$path" ]]; then
         echo "Error: path is required"
         exit 1
     fi
-    
     if [[ "$unmount" == "true" ]]; then
         echo "Unmounting $path"
         sudo umount $path
@@ -187,11 +189,10 @@ function push() {
 
 
 
-
 alias lsfonts=fc_list
 alias rfonts="refresh_font_cache"
 alias c="code"
-alias cs='clear'
+
 alias nf='fastfetch'
 alias pf='fastfetch'
 alias ls='eza -1 --icons'

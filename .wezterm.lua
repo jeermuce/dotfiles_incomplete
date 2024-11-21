@@ -14,7 +14,7 @@ wezterm.on('gui-startup', function(window)
   gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
 end)
 
-
+config.warn_about_missing_glyphs = false
 
 config.window_background_opacity = 1
 config.enable_tab_bar = false
