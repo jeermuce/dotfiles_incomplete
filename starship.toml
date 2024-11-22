@@ -17,12 +17,16 @@ symbol = "↕️ "
 [shell]
 disabled = false
 bash_indicator = ""
+powershell_indicator = "󰨊"
 
 [os]
 disabled = false
 format = "$symbol "
 symbols.Ubuntu = ""
+symbols.Pop = ""
 symbols.Arch = "󰣇"
+symbols.Windows = ""
+
 [git_branch]
 format =  '[$symbol$branch(:$remote_branch)]($style)'
 
