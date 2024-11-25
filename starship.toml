@@ -53,35 +53,41 @@ truncate_to_repo = false
 [fill]
 symbol = ' '
 
-[python]
-symbol = ' '
+[python] 
+symbol = ' ' 
+#pyenv_version_name = true 
+#pyenv_prefix = '' 
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
-pyenv_version_name = true
-pyenv_prefix = ''
 
 [lua]
 format = '[$symbol($version )]($style)'
 symbol = ' '
+style = 'blue bold'
 
 [nodejs]
-style = 'blue'
+style = 'blue bold'
 symbol = ' '
+format = '[$symbol($version )]($style)' 
 
 [golang]
 format = '[ ](bold cyan)'
 style = 'blue'
 
+
 [haskell]
-style = 'blue'
+style = 'blue bold'
 symbol = ' '
+format = '[$symbol($version )]($style)'
 
 [rust]
-style = 'orange'
+style = 'orange bold'
 symbol = ' '
+format = '[$symbol($version )]($style)'
 
 [ruby]
-style = 'blue'
+style = 'blue bold'
 symbol = ' '
+format = '[$symbol($version )]($style)'
 
 [package]
 symbol = '󰏗 '
@@ -150,11 +156,12 @@ symbols.Arch = "󰣇"
 symbols.Windows = ""
 
 [git_branch]
-style = 'fg:green'
+symbol = ' '
+style = 'bold white'
 format = '[on](white) [$symbol$branch ]($style)'
 
 [git_status]
-style = 'fg:red'
+style = 'bold red'
 format = '([$all_status$ahead_behind]($style) )'
 
 [kubernetes]

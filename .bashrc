@@ -26,6 +26,10 @@ BLUE="\e[34m"
 GREEN="\e[32m"
 CYAN="\e[36m"
 NOCOLOR="\e[37m"
+alias nscript=nscript
+function nscript(){
+    nvim /home/osira/.scripts/"$@".sh
+}
 function zed() {
     ~/.local/bin/zed "$@"
 }
