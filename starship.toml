@@ -19,10 +19,14 @@ $aws\
 $docker_context\
 $jobs\
 $cmd_duration\
+$time\
 $line_break\
+$shlvl\
+$os\
+$shell\
 $character"""
 
-palette = "nord"
+palette = "catppuccin_mocha"
 
 [time]
 disabled = false
@@ -32,7 +36,6 @@ time_format = '%T'
 ##########################
 
 [directory]
-style = 'bold fg:dark_blue'
 format = '[$path ]($style)'
 truncation_length = 3
 truncation_symbol = '…/'
@@ -51,7 +54,6 @@ truncate_to_repo = false
 symbol = ' '
 
 [python]
-style = 'teal'
 symbol = ' '
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 pyenv_version_name = true
@@ -99,7 +101,6 @@ format = '[$symbol]($style)'
 
 [cmd_duration]
 min_time = 500
-style = 'fg:gray'
 format = '[$duration]($style)'
 
 [palettes.nord]
@@ -174,19 +175,25 @@ detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
 detect_extensions = ['Dockerfile']
 
 [palettes.catppuccin_mocha]
+dark_blue = '#5E81AC'
+blue = '#81A1C1'
+teal = '#88C0D0'
+red = '#BF616A'
+orange = '#D08770'
+green = '#A3BE8C'
+yellow = '#EBCB8B'
+purple = '#B48EAD'
+gray = '#434C5E'
+black = '#2E3440'
+white = '#D8DEE9'
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
 pink = "#f5c2e7"
 mauve = "#cba6f7"
-red = "#f38ba8"
 maroon = "#eba0ac"
 peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
 sky = "#89dceb"
 sapphire = "#74c7ec"
-blue = "#89b4fa"
 lavender = "#b4befe"
 text = "#cdd6f4"
 subtext1 = "#bac2de"
