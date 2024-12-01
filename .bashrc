@@ -45,6 +45,9 @@ function y() {
     rm -f -- "$tmp"
 }
 
+function remove_unused(){
+    sudo pacman -Rns $(pacman -Qdtq)
+}
 
 # -----------------------------------------------------
 # ALIASES

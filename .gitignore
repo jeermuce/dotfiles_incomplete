@@ -11,3 +11,5 @@
 !.wezterm.lua
 !.git/
 !starship.toml
+!config.toml
+
