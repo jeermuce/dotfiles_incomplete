@@ -10,11 +10,12 @@
 # ~/.bashrc
 # -----------------------------------------------------
 eval "$(fnm env --use-on-cd --shell bash)"
-# export ANDROID_HOME="/opt/android-sdk"
-# export oNDK_HOME="/opt/android-ndk"
+
 export FLYCTL_INSTALL="/home/osira/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
-
+function install_paru(){
+    cargo install paru --git https://github.com/Morganamilo/paru --tag v2.0.4
+}
 source "/home/osira/.scripts/clear.sh"
 source "/home/osira/.scripts/ns.sh"
 # If not running interactively, don't do anything
