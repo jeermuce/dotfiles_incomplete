@@ -1,0 +1,12 @@
+
+ingles i,algebra superior,calculo diferencial e integral,tecnologias y manejo de la información,sociedad y cultura;
+ingles ii, algebra lineal, calculo aplicado,universidad y conocimiento, lenguaje y comunicacion;
+ingless iii, matematicas discretas, administración, fisica básica;
+ingles iv, intro a sistemas y redes, diseño de algoritmos, probabilidad y estadistica;
+ingles avanzado i, bases de datos i, programación i, metodos numericos;
+ingles avanzado ii, bases de datos ii, programacion ii, estructura de datos;
+preparación para el toefl, almacenes de datos, seguridad de software, ingenieria de software;
+administracion del proceso de software, ingenieria de requerimientos, diseño de interfaces, investigacion de operaciones;
+pruebas de software, administracion del proceso de software ii, diseño de software, taller emprendedor;
+ejercicio profesional de la ingenieria de software i, modelado de software, proyectos profesionales i;
+ejercicio profesional de la ingenieria de software ii, proyectos profesionales ii;

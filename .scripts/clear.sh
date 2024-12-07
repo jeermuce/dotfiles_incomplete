@@ -1,3 +1,0 @@
-function cs() {
-    clear
-}
