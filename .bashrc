@@ -145,14 +145,14 @@ function batzed(){
     bat ~/.config/zellij/config.kdl
 }
 function batbash(){
-    bat ~/.bashrc
+    bat ~/dotfiles_incomplete/.bashrc
 }
 function nbash(){
-    nvim ~/.bashrc
+    nvim ~/dotfiles_incomplete/.bashrc
 }
 
 function cbash(){
-    code ~/.bashrc
+    code ~/dotfiles_incomplete/.bashrc
 }
 function fc_list() {
     #if no arguments are passed, list all fonts
